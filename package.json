@@ -1,0 +1,94 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon --watch main.js  --exec 'electron .'",
+    "dist": "build"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "electron-store": "^3.3.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "electron-builder": "^20.43.0",
+    "jquery": "^3.4.1",
+    "nodemon": "^1.19.1",
+    "popper.js": "^1.15.0"
+  },
+  "build": {
+    "appId": "imgstore-electron",
+    "asar": true,
+    "files": [
+      "**/*",
+      "!docs${/*}",
+      "!node_modules/@paulcbetts/cld/deps/cld${/*}"
+    ],
+    "copyright": "©2019 Kandra Labs, Inc.",
+    "mac": {
+      "category": "public.app-category.productivity"
+    },
+    "deb": {
+      "synopsis": "Zulip Desktop App",
+      "afterInstall": "./scripts/debian-add-repo.sh",
+      "afterRemove": "./scripts/debian-uninstaller.sh"
+    },
+    "snap": {
+      "synopsis": "Zulip Desktop App"
+    },
+    "dmg": {
+      "background": "build/appdmg.png",
+      "icon": "build/icon.icns",
+      "iconSize": 100,
+      "contents": [
+        {
+          "x": 380,
+          "y": 280,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 110,
+          "y": 280,
+          "type": "file"
+        }
+      ],
+      "window": {
+        "width": 500,
+        "height": 500
+      }
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis-web",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "Kandra Labs, Inc."
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false
+    }
+  }
+}
